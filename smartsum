@@ -1,0 +1,7 @@
+function y = smartsum(x, dim)
+%y = smartsum(x, dim)
+%Sum along dimension dim, ignoring NaN.
+hasData=isfinite(x);
+x(∼hasData)=0;
+y=sum(x,dim);
+y(all(∼hasData, dim))=NaN;
