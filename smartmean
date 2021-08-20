@@ -1,0 +1,8 @@
+function y = smartmean(x, dim)
+% y = smartmean(x, dim)
+% Mean value along dimension dim, ignoring NaN.
+hasData=isfinite(x);
+x(∼hasData)=0;
+y=sum(x,dim)./sum(hasData, dim);
+y(all(∼hasData, dim))=NaN; % set y to NaN if all entries
+are NaN’s.
