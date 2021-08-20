@@ -1,0 +1,7 @@
+function y = smartstd(x, dim)
+%y = smartstd(x, dim)
+% std along dimension dim, ignoring NaN and Inf
+hasData=isfinite(x);
+x(∼hasData)=0;
+y=std(x);
+y(all(∼hasData, dim))=NaN;
